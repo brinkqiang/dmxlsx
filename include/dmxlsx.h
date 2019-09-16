@@ -48,4 +48,6 @@ YM      M9  MM    MM MM       MM    MM   d'  `MM.    MM            MM   d'  `MM.
 
 #include "OpenXLSX.h"
 
+using namespace OpenXLSX;
+
 #endif //__DMXLSX_INCLUDE_H__

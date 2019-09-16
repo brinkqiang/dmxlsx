@@ -3,8 +3,6 @@
 #include <dmxlsx.h>
 
 using namespace std;
-using namespace OpenXLSX;
-
 /*
  * TODO: Sheet iterator
  * TODO: Handling of named ranges

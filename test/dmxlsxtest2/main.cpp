@@ -4,7 +4,6 @@
 #include <dmxlsx.h>
 
 using namespace std;
-using namespace OpenXLSX;
 
 int main() {
 
