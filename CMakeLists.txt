@@ -15,10 +15,16 @@ SET(DMXLSX_VERSION "${DMXLSX_VERSION_MAJOR}.${DMXLSX_VERSION_MINOR}.${DMXLSX_VER
 MESSAGE(STATUS "VERSION: ${DMXLSX_VERSION}")
 
 OPTION(USE_DMXLSX "use dmxlsx" OFF)
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/dmxlsx_config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/dmxlsx_config.h)
 
-LibImport("dmxlsx" "src/dmxlsx_module")
-ExeImport("test" "dmxlsx")
+LibImport("dmxlsx" "src/dmxlsx")
+LibImport("dmxlsximpl" "src/dmxlsximpl")
+LibImport("pugixml" "src/pugixml")
+ModuleInclude("zippy" "src/zippy")
+ExeImport("test" "dmxlsx;dmxlsximpl;pugixml")
+
+include(GenerateExportHeader)
+generate_export_header(dmxlsx)
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/dmxlsx_export.h DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 #ADD_CUSTOM_COMMAND(
 #TARGET dmxlsxtest
