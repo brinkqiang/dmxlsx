@@ -16,6 +16,10 @@ MESSAGE(STATUS "VERSION: ${DMXLSX_VERSION}")
 
 OPTION(USE_DMXLSX "use dmxlsx" OFF)
 
+SET(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_EXTENSIONS OFF)
+
 LibImport("dmxlsx" "src/dmxlsx")
 LibImport("dmxlsximpl" "src/dmxlsximpl")
 LibImport("pugixml" "src/pugixml")

@@ -56,9 +56,9 @@ namespace OpenXLSX
     //========== Global Constants ==========================================================================================
     //======================================================================================================================
 
-    constexpr uint32_t maxRows = 1'048'576;
+    constexpr uint32_t maxRows = 1048576;
 
-    constexpr uint16_t maxCols = 16'384;
+    constexpr uint16_t maxCols = 16384;
 
     constexpr uint8_t alphabetSize = 26;
 
