@@ -21,12 +21,16 @@ int main() {
     wbk.Worksheet("Sheet1").Row(1);
 
     for (const auto& name : wbk.WorksheetNames())
+    {
         cout << name << ": " << wbk.IndexOfSheet(name) << endl;
+    }
 
     cout << endl;
 
     for (auto iter = 1; iter <= wbk.SheetCount(); ++iter)
-        cout << iter << ": " << wbk.Sheet(iter).Name() << endl;
+    {
+        cout << iter << ": " << wbk.Sheet(iter).Name() << endl;        
+    }
 
     doc.SaveDocument();
 
