@@ -21,7 +21,7 @@ int main() {
     try
     {
         XLDocument doc;
-        doc.OpenDocument(DMGetRootPath() + PATH_DELIMITER + "1monster.xlsx");
+        doc.OpenDocument(DMGetRootPath() + PATH_DELIMITER + "monster.xlsx");
         auto wks = doc.Workbook().Worksheet("def");
 
         for (int i = 1; i <= wks.RowCount(); ++i)
