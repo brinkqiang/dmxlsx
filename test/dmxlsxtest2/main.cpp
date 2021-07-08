@@ -34,5 +34,21 @@ int main() {
 
     doc.SaveDocument();
 
+    XLDocument doc2;
+    doc2.OpenDocument("./MyTest.xlsx");
+    auto wbk2 = doc2.Workbook();
+
+    for (const auto& name : wbk2.WorksheetNames())
+    {
+        cout << name << ": " << wbk2.IndexOfSheet(name) << endl;
+    }
+
+    cout << endl;
+
+    for (auto iter = 1; iter <= wbk2.SheetCount(); ++iter)
+    {
+        cout << iter << ": " << wbk2.Sheet(iter).Name() << endl;
+    }
+
     return 0;
 }
