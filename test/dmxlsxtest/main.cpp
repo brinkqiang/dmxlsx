@@ -2,46 +2,36 @@
 #include <iomanip>
 #include <dmxlsx.h>
 
-using namespace std;
-/*
- * TODO: Sheet iterator
- * TODO: Handling of named ranges
- * TODO: Column/Row iterators
- * TODO: correct copy/move operations for all classes
- * TODO: Find a way to handle overwriting of shared formulas.
- * TODO: Handling of Cell formatting
- * TODO: Handle chartsheets
- * TODO: Update formulas when changing Sheet Name.
- * TODO: Get vector for a Row or Column.
- * TODO: Conditional formatting
- */
-
 int main() {
 
     XLDocument doc;
-    doc.CreateDocument("./MyTest.xlsx");
-    auto wks = doc.Workbook().Worksheet("Sheet1");
+    doc.CreateDocument("./github.xlsx");
+    doc.Workbook().AddWorksheet("public");
+    doc.Workbook().AddWorksheet("private");
+    doc.Workbook().DeleteSheet("Sheet1");
 
-    wks.Cell("A1").Value() = 3.14159;
-    wks.Cell("B1").Value() = 42;
-    wks.Cell("C1").Value() = "Hello OpenXLSX!";
-    wks.Cell("D1").Value() = true;
-    wks.Cell("E1").Value() = wks.Cell("C1").Value();
+    auto wkb = doc.Workbook().Worksheet("public");
+    wkb.Cell("A1").Value() = 3.14159;
+    wkb.Cell("B1").Value() = 42;
+    wkb.Cell("C1").Value() = "Hello OpenXLSX!";
+    wkb.Cell("D1").Value() = true;
+    wkb.Cell("E1").Value() = wkb.Cell("C1").Value();
 
-    auto A1 = wks.Cell("A1").Value().Get<double>();
-    auto B1 = wks.Cell("B1").Value().Get<unsigned int>();
-    auto C1 = wks.Cell("C1").Value().Get<std::string>();
-    auto D1 = wks.Cell("D1").Value().Get<bool>();
-    auto E1 = wks.Cell("E1").Value().Get<std::string>();
+    auto A1 = wkb.Cell(1, 1).Value().Get<double>();
+    auto B1 = wkb.Cell(1, 2).Value().Get<unsigned int>();
+    auto C1 = wkb.Cell("C1").Value().Get<std::string>();
+    auto D1 = wkb.Cell("D1").Value().Get<bool>();
+    auto E1 = wkb.Cell("E1").Value().Get<std::string>();
 
-    auto val = wks.Cell("E1").Value();
-    cout << val.Get<std::string>() << endl;
+    auto val = wkb.Cell("E1").Value();
 
-    cout << "Cell A1: " << A1 << endl;
-    cout << "Cell B1: " << B1 << endl;
-    cout << "Cell C1: " << C1 << endl;
-    cout << "Cell D1: " << D1 << endl;
-    cout << "Cell E1: " << E1 << endl;
+    std::cout << val.Get<std::string>() << std::endl;
+
+    std::cout << "Cell A1: " << A1 << std::endl;
+    std::cout << "Cell B1: " << B1 << std::endl;
+    std::cout << "Cell C1: " << C1 << std::endl;
+    std::cout << "Cell D1: " << D1 << std::endl;
+    std::cout << "Cell E1: " << E1 << std::endl;
 
     doc.SaveDocument();
 

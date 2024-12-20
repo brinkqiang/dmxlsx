@@ -22,27 +22,10 @@ SET(CMAKE_CXX_EXTENSIONS OFF)
 
 LibImport("dmxlsx" "src/dmxlsx")
 LibImport("dmxlsximpl" "src/dmxlsximpl")
-LibImport("pugixml" "src/pugixml")
 ModuleInclude("zippy" "src/zippy")
-ExeImport("test" "dmxlsx;dmxlsximpl;pugixml")
+
+ExeImport("test" "dmxlsx;dmxlsximpl")
 
 include(GenerateExportHeader)
 generate_export_header(dmxlsx)
 file(COPY ${CMAKE_CURRENT_BINARY_DIR}/dmxlsx_export.h DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-#ADD_CUSTOM_COMMAND(
-#TARGET dmxlsxtest
-#PRE_BUILD
-#COMMAND ${CMAKE_COMMAND} -E copy_if_different
-#${CMAKE_CURRENT_SOURCE_DIR}/config/test.csv
-#$<TARGET_FILE_DIR:dmxlsxtest>
-#)
-
-#INSTALL(DIRECTORY include/ DESTINATION include)
-#INSTALL(TARGETS dmxlsx
-#        RUNTIME DESTINATION bin
-#        LIBRARY DESTINATION lib
-#        ARCHIVE DESTINATION lib)
-
-#SET(DMXLSX_LIBS "dmxlsx")
-#MARK_AS_ADVANCED(${DMXLSX_LIBS})

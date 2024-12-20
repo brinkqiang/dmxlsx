@@ -396,33 +396,34 @@ void Impl::XLCellValue::SetFloat(long double numberValue) {
 
 long long int Impl::XLCellValue::GetInteger() const {
 
-    if (ValueType() != XLValueType::Integer)
-        throw XLException("Cell value is not Integer");
+    //if (ValueType() != XLValueType::Integer)
+    //    throw XLException("Cell value is not Integer");
     return ValueNode().text().as_llong();
 }
 
 bool Impl::XLCellValue::GetBoolean() const {
 
-    if (ValueType() != XLValueType::Boolean)
-        throw XLException("Cell value is not Boolean");
+    //if (ValueType() != XLValueType::Boolean)
+    //    throw XLException("Cell value is not Boolean");
     return !(std::string_view(ValueNode().text().get()) == "0");
 }
 
 long double Impl::XLCellValue::GetFloat() const {
 
-    if (ValueType() != XLValueType::Float)
-        throw XLException("Cell value is not Float");
+    //if (ValueType() != XLValueType::Float)
+    //    throw XLException("Cell value is not Float");
     return std::stold(ValueNode().text().get());
 }
 
 const char* Impl::XLCellValue::GetString() const {
 
-    if (ValueType() != XLValueType::String)
-        throw XLException("Cell value is not String");
+    //if (ValueType() != XLValueType::String)
+    //    throw XLException("Cell value is not String");
     if (std::string_view(TypeAttribute().value()) == "str") // ordinary string
         return ValueNode().text().get();
     if (std::string_view(TypeAttribute().value()) == "s") // shared string
         return SharedStringNode(ValueNode().text().as_ullong()).text().get();
 
-    throw XLException("Unknown string type");
+    //throw XLException("Unknown string type");
+    return ValueNode().text().get();
 }
